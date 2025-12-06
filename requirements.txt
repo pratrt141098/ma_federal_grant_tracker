@@ -1,0 +1,8 @@
+pandas         # Data manipulation and CSV I/O [web:59][web:67]
+numpy          # Arrays, numeric ops (used indirectly via pandas) [web:68][web:75]
+pytest         # For running tests/test_basic_sanity.py [web:69][web:74]
+streamlit      # For building web apps
+plotly         # For interactive plots in web apps
+pydeck
+geopy
+dash
