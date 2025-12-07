@@ -1,5 +1,5 @@
-#Massachusetts Federal Grant Cuts – Dashboard
-##nto CANCELLATION, RESCISSION, PARTIAL_RES_CUMPOS, ADMIN_OR_PREPAY_ADJ, and NODEOBLIGATION using transaction histories and outlay data.​
+# Massachusetts Federal Grant Cuts – Dashboard
+## nto CANCELLATION, RESCISSION, PARTIAL_RES_CUMPOS, ADMIN_OR_PREPAY_ADJ, and NODEOBLIGATION using transaction histories and outlay data.​
 
 Aggregates award‑ and county‑level metrics for equity analysis and builds an interactive Streamlit dashboard for exploration.​
 
@@ -172,3 +172,4 @@ data_exports/ – CSV exports feeding the dashboard (not tracked here if generat
 
 
 If you plan to extend this work (e.g., to additional states or time periods), replicate the ETL pattern in ma_grant_cuts and ensure new exports preserve the column structure expected in app.py filters and charts.​
+
