@@ -2,19 +2,19 @@ import pandas as pd
 import numpy as np
 from config import USASPENDING_CSV
 
-def load_raw_transactions(path: str | None = None) -> pd.DataFrame:
+def load_raw_transactions(path):
     csv_path = path if path is not None else USASPENDING_CSV
     df = pd.read_csv(csv_path, low_memory=False)
     df.columns = [c.strip() for c in df.columns]
     return df
 
-def build_awardid(df: pd.DataFrame) -> pd.DataFrame:
-    # Use the same logic as eda_final: assistance_award_unique_key / award_id_fain / award_id_uri
+def build_awardid(df):
+    # We use the same logic as eda_final: assistance_award_unique_key / award_id_fain / award_id_uri
     award_candidates = [
         "assistance_award_unique_key",
         "award_id_fain",
         "award_id_uri",
-        "award_id",  # already created in your notebook, but include as fallback
+        "award_id"
     ]
     present_award_cols = [c for c in award_candidates if c in df.columns]
 
@@ -39,8 +39,8 @@ def build_awardid(df: pd.DataFrame) -> pd.DataFrame:
     df = df[df["awardid"].str.len() > 0].copy()
     return df
 
-def convert_dates_and_amounts(df: pd.DataFrame) -> tuple[pd.DataFrame, str]:
-    # In eda_final you use action_date
+def convert_dates_and_amounts(df):
+    # Like in eda_final we use action_date
     datecol = "action_date" if "action_date" in df.columns else None
     if datecol is None:
         raise KeyError("Expected 'action_date' column (as in eda_final).")
@@ -53,7 +53,7 @@ def convert_dates_and_amounts(df: pd.DataFrame) -> tuple[pd.DataFrame, str]:
         pd.to_numeric(df["federal_action_obligation"], errors="coerce").fillna(0.0)
     )
 
-    # In eda_final you standardised to total_outlayed_amount_for_overall_award
+    # In eda_final, we standardised to total_outlayed_amount_for_overall_award, we do the same here
     outlay_col_raw = "total_outlayed_amount_for_overall_award"
     if outlay_col_raw not in df.columns:
         # safe default
@@ -167,7 +167,7 @@ def classify_awards(finalsnap: pd.DataFrame) -> pd.DataFrame:
 
     return m1
 
-def build_base(path: str | None = None) -> tuple[pd.DataFrame, pd.DataFrame, str]:
+def build_base(path):
     df = load_raw_transactions(path)
     df = build_awardid(df)
     df, datecol = convert_dates_and_amounts(df)

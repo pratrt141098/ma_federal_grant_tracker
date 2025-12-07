@@ -28,7 +28,7 @@ def test_build_base_runs():
 
 
 def test_exports_exist_and_nonempty():
-    # These tests assume you've already run scripts/run_all_exports.py
+    # These tests assume we've already run scripts/run_all_exports.py
     for path in [AWARDS_MASTER_CSV, TX_DEOB_CSV, GEO_AGG_CSV]:
         assert path.exists(), f"{path} should exist – run run_all_exports.py first"
         df = pd.read_csv(path)
@@ -48,7 +48,7 @@ def test_awards_total_consistency():
     if "total_deobligation_neg" in awards.columns:
         total_neg_awards = awards["total_deobligation_neg"].sum()
         assert total_neg_awards > 0
-        # sanity: within a factor of 2 (adjust if you know exact equality should hold)
+        # sanity: within a factor of 2
         ratio = total_neg_awards / total_neg_raw if total_neg_raw else 0
         assert 0.5 <= ratio <= 1.5, (
             f"total_deobligation_neg in awards_master ({total_neg_awards}) "

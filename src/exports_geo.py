@@ -42,7 +42,7 @@ def load_dp05_county() -> pd.DataFrame:
     pop_col = "DP05_0001E"
     out["population_total"] = pd.to_numeric(dp[pop_col], errors="coerce")
 
-    # Race / ethnicity counts (from your DP05 header)
+    # Race / ethnicity counts (from DP05 headers)
     black_col = "DP05_0038E"         # One race: Black or African American (count)
     asian_col = "DP05_0047E"         # One race: Asian (count)
     hisp_col = "DP05_0076E"          # Hispanic or Latino (of any race) (count)
@@ -72,13 +72,9 @@ def load_dp05_county() -> pd.DataFrame:
     ]]
 
 
-def export_geo_aggregation(
-    df: pd.DataFrame,
-    awards_master: pd.DataFrame,
-    county_lookup: pd.DataFrame | None = None,
-) -> pd.DataFrame:
+def export_geo_aggregation(df,awards_master,county_lookup):
     """
-    Build geo_aggregation.csv at county level by joining:
+    We build geo_aggregation.csv at county level by joining:
     - Transaction-level deobligations summed by recipient_county_name
     - DP05 county demographics keyed by county_name (already aligned)
     """

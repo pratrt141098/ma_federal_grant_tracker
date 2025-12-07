@@ -8,11 +8,9 @@ from config import (
 )
 
 
-def export_transactions_deob(
-    df: pd.DataFrame, m1: pd.DataFrame, datecol: str
-) -> pd.DataFrame:
+def export_transactions_deob(df, m1, datecol):
     """
-    Export transaction-level de-obligations for Tableau (transactions_deob.csv)
+    We export transaction-level de-obligations for Tableau (transactions_deob.csv)
     and a city-month rollup for animated city maps (transactions_deob_city_month.csv).
     """
     ensure_directories()

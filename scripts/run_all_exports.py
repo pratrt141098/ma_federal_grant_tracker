@@ -26,8 +26,6 @@ def main():
     print("Exporting transactions_deob...")
     tx_deob = export_transactions_deob(df, m1, date_col)
 
-    # For geo aggregation, you may want df that already has county_fips merged.
-    # If that step is separate, call it before this.
 
     print("Exporting geo_aggregation...")
     geo = export_geo_aggregation(df, awards_master, county_lookup=None)

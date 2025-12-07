@@ -2,9 +2,9 @@ import pandas as pd
 from config import TRUMP_START, AWARDS_MASTER_CSV, ensure_directories
 
 
-def export_awards_master(df: pd.DataFrame, m1: pd.DataFrame, datecol: str) -> pd.DataFrame:
+def export_awards_master(df):
     """
-    Build awards_master.csv: one row per awardid, combining:
+    We build awards_master.csv: one row per awardid, combining:
     - m1 (final_cum_obligation, total_negative_amount, total_obligation_amount, etc.)
     - descriptive columns from df (CFDA, agencies)
     - period flags and Trump-era cut flags
@@ -35,7 +35,7 @@ def export_awards_master(df: pd.DataFrame, m1: pd.DataFrame, datecol: str) -> pd
         .first()
     )
 
-    # Start from m1 (final snapshots + labels) and add descriptive info
+    # We start from m1 (final snapshots + labels) and add descriptive info
     awards = m1.merge(base_info, on="awardid", how="left")
 
     # First / last action dates per awardid (using the passed datecol, i.e. "action_date")
