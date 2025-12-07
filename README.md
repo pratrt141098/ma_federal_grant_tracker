@@ -1,10 +1,5 @@
-Massachusetts Federal Grant Cuts – Dashboard
-This repository contains the data pipeline and Streamlit dashboard used to track and analyze federal grant cancellations, rescissions, and other de‑obligations affecting Massachusetts, with a focus on the Trump administration period starting January 20, 2025.​
-
-Project overview
-Tracks de‑obligations across 130k+ assistance transactions and 40k+ awards to Massachusetts from FY2021–FY2025.​
-
-Classifies awards into CANCELLATION, RESCISSION, PARTIAL_RES_CUMPOS, ADMIN_OR_PREPAY_ADJ, and NODEOBLIGATION using transaction histories and outlay data.​
+#Massachusetts Federal Grant Cuts – Dashboard
+##nto CANCELLATION, RESCISSION, PARTIAL_RES_CUMPOS, ADMIN_OR_PREPAY_ADJ, and NODEOBLIGATION using transaction histories and outlay data.​
 
 Aggregates award‑ and county‑level metrics for equity analysis and builds an interactive Streamlit dashboard for exploration.​
 
@@ -174,5 +169,6 @@ ma_grant_cuts/__init__.py – package description and high‑level ETL exports.�
 eda_final.ipynb – exploratory analysis, diagnostic plots, and narrative findings used to validate the logic; includes charts on de‑obligations by classification and detailed award examples.​
 
 data_exports/ – CSV exports feeding the dashboard (not tracked here if generated locally).
+
 
 If you plan to extend this work (e.g., to additional states or time periods), replicate the ETL pattern in ma_grant_cuts and ensure new exports preserve the column structure expected in app.py filters and charts.​
