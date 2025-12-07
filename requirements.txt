@@ -1,5 +1,5 @@
 pandas         # Data manipulation and CSV I/O
 numpy          # Arrays, numeric ops (used indirectly via pandas)
-pytest         # For running tests/test_basic_sanity.py 
+pytest         # For running tests/test_basic_sanity.py
 streamlit      # For building web apps
 plotly         # For interactive plots in web apps
